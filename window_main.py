@@ -3,9 +3,6 @@
 import wx
 
 class main_window(wx.Frame):
-    """
-    A Frame that says Hello World
-    """
 
     def __init__(self, *args, **kw):
         # ensure the parent's __init__ is called
@@ -31,21 +28,34 @@ class main_window(wx.Frame):
 
         # Make a file menu
         fileMenu = wx.Menu()
+
+        # Make a file submenu called 'New'
         OptionsNew = wx.Menu()
+
+        # Make a submenu for creating certificates
         OptionsCertificate = wx.Menu()
         OptionsCertificate.Append(wx.ID_ANY, 'Root CA', 'Creates cert for a self-signed root certificate authority')
         OptionsCertificate.Append(wx.ID_ANY, 'Intermediate CA', 'Creates cert for an intermediate certificate authority')
         OptionsCertificate.Append(wx.ID_ANY, 'Server Certificate', 'Creates cert for a server')
         OptionsCertificate.Append(wx.ID_ANY, 'Client Certificate', 'Creates cert for client')
+
+        # Make a submenu for creating certificate signing requests
         OptionsCSR = wx.Menu()
         OptionsCSR.Append(wx.ID_ANY, 'Intermediate CA', 'Creates a CSR to Root CA on behalf of an intermediate CA')
         OptionsCSR.Append(wx.ID_ANY, 'Server Certificate', 'Creates a CSR to Intermediate CA on behalf of a server')
         OptionsCSR.Append(wx.ID_ANY, 'Client Certificate', 'Creates a CSR to Intermediate Ca on behalf of client')
+
+        # Append the submenus to the file menu
         fileMenu.Append(wx.ID_ANY, '&New',  OptionsNew)
         OptionsNew.Append(wx.ID_ANY, '&Certificate', OptionsCertificate)
         OptionsNew.Append(wx.ID_ANY, '&Certificate Req.', OptionsCSR)
+
+        # Separate the file menu options for ecstatics
         fileMenu.AppendSeparator()
+
+        #Append the Quit option to file menu
         exitItem = wx.MenuItem(fileMenu, wx.ID_EXIT, '&Quit\tCtrl+W')
+        fileMenu.Append(exitItem)
 
         # Now a help menu for the about item
         helpMenu = wx.Menu()
@@ -58,7 +68,8 @@ class main_window(wx.Frame):
         menuBar = wx.MenuBar()
         menuBar.Append(fileMenu, "&File")
         menuBar.Append(helpMenu, "&Help")
-        fileMenu.Append(exitItem)
+
+
         # Give the menu bar to the frame
         self.SetMenuBar(menuBar)
 
