@@ -1,6 +1,7 @@
 #!/bin/python
 
 import wx
+import Screen1
 
 class main_window(wx.Frame):
 
@@ -93,5 +94,7 @@ if __name__ == '__main__':
     # frame, show it, and start the event loop.
     app = wx.App()
     mainFrame = main_window(None, title='TLS EZ')
+    first=Screen1.screen1(mainFrame,wx.ID_ANY)
     mainFrame.Show()
+    first.Show()
     app.MainLoop()
