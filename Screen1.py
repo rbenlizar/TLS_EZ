@@ -9,16 +9,19 @@ class screen1(wx.Panel):
         super().__init__(*args, **kw)
         self.policies = ['Strict','Loose']
         self.createControlsInt()
+        self.bindEvents()
 
     def createControlsInt(self):
         form1=wx.FlexGridSizer(rows=5, cols=2, vgap=10, hgap=10)
         sizer=wx.BoxSizer(wx.HORIZONTAL)
         self.importCheckBox = wx.CheckBox(self, label='Import Existing CSR')
         self.importField = wx.TextCtrl(self, value='Please enter path to CSR')
+        self.importField.Disable()
         self.policyLabel= wx.StaticText(self, label='Select a Policy')
         self.policyDropdown = wx.ComboBox(self, choices= self.policies, style=wx.CB_DROPDOWN)
         self.pkCheckBox = wx.CheckBox(self, label='Import Private Key')
         self.pkField = wx.TextCtrl(self, value='Please enter path to existing Private Key')
+        self.pkField.Disable()
         self.keySizeLabel = wx.StaticText(self, label='Key Size: ')
         self.keySizeField = wx.TextCtrl(self, value='Enter Key Size')
         self.nextButton = wx.Button(self, label='Next')
@@ -39,14 +42,44 @@ class screen1(wx.Panel):
 
     def bindEvents(self):
         for control, event, handler in \
-            [(self.importCheckBox, wx.EVT_CHECKBOX, self.onImportPath)]:
-#             (self.nameTextCtrl, wx.EVT_TEXT, self.onNameEntered),
+            [(self.importCheckBox, wx.EVT_CHECKBOX, self.onImportPath),
+             (self.importField, wx.EVT_SET_FOCUS, self.onTextEnterCSR),
+             (self.importField, wx.EVT_KILL_FOCUS, self.onTextEnterCSR),
+             (self.pkCheckBox, wx.EVT_CHECKBOX, self.onImportPathPK),
+             (self.pkField, wx.EVT_SET_FOCUS, self.onTextEnterPK),
+             (self.pkField, wx.EVT_KILL_FOCUS, self.onTextEnterPK)
+             ]:
 #             (self.nameTextCtrl, wx.EVT_CHAR, self.onNameChanged),
 #             (self.referrerComboBox, wx.EVT_COMBOBOX, self.onReferrerEntered),
 #             (self.referrerComboBox, wx.EVT_TEXT, self.onReferrerEntered),
 #             (self.insuranceCheckBox, wx.EVT_CHECKBOX, self.onInsuranceChanged),
 #             (self.colorRadioBox, wx.EVT_RADIOBOX, self.onColorchanged)]:
             control.Bind(event, handler)
+
+    def onImportPath(self, e):
+        if e.IsChecked():
+            self.importField.Enable()
+        else:
+            self.importField.Disable()
+
+    def onTextEnterCSR(self, e):
+        if self.importField.GetValue() == 'Please enter path to CSR':
+            self.importField.SetValue('')
+        elif self.importField.GetValue() == '':
+            self.importField.SetValue('Please enter path to CSR')
+
+    def onImportPathPK(self, e):
+        if e.IsChecked():
+            self.pkField.Enable()
+        else:
+            self.pkField.Disable()
+
+    def onTextEnterPK(self, e):
+        if self.pkField.GetValue() == 'Please enter path to existing Private Key':
+            self.pkField.SetValue('')
+        elif self.pkField.GetValue() == '':
+            self.pkField.SetValue('Please enter path to existing Private Key')
+
 
 
 app= wx.App()

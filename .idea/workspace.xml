@@ -29,8 +29,8 @@
       <file leaf-file-name="Screen1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Screen1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="43" column="67" lean-forward="true" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+            <state relative-caret-position="361">
+              <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -309,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527730322698</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Testing form creation">
+      <created>1527735131033</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1527735131033</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -448,8 +455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Screen1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="43" column="67" lean-forward="true" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+        <state relative-caret-position="361">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding />
         </state>
       </provider>
