@@ -94,7 +94,7 @@ if __name__ == '__main__':
     # frame, show it, and start the event loop.
     app = wx.App()
     mainFrame = main_window(None, title='TLS EZ')
-    first=Screen1.screen1(mainFrame,wx.ID_ANY)
+    first=Screen1.screen1(mainFrame)
     mainFrame.Show()
     first.Show()
     app.MainLoop()
